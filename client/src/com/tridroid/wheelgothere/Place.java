@@ -19,8 +19,15 @@ public class Place extends OverlayItem
         this.lat  = lat;
         this.lng  = lng;
         this.accessible = accessible;
-        
-        overlay = res.getDrawable(R.drawable.inaccessible);
+       
+        if (accessible == 0)
+            overlay = res.getDrawable(R.drawable.unknown);
+        else if (accessible == 1)
+            overlay = res.getDrawable(R.drawable.inaccessible);
+        else if (accessible == 2)
+            overlay = res.getDrawable(R.drawable.partiallyaccessible);
+        else
+            overlay = res.getDrawable(R.drawable.accessible);
 
         setMarker(icon);
     }

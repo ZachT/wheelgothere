@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+<RadioGroup
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <RadioButton android:id="@+id/accessible"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="Accessible" />
+    <RadioButton android:id="@+id/partiallyaccessible"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="Partially Accessible" />
+    <RadioButton android:id="@+id/inaccessible"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="Inaccessible" />
+</RadioGroup>
+
+</LinearLayout>

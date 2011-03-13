@@ -53,7 +53,7 @@ public class WheelGoThere extends MapActivity implements LocationListener
 
         placesManager = new PlacesManager(context);
 
-        wgtoverlay = new WGTItemizedOverlay(res.getDrawable(R.drawable.defaultmarker));
+        wgtoverlay = new WGTItemizedOverlay(context, res.getDrawable(R.drawable.defaultmarker));
         mapView.getOverlays().add(wgtoverlay);
 
         locationManager = (LocationManager)this.getSystemService(Context.LOCATION_SERVICE);

@@ -1,10 +1,14 @@
 package com.tridroid.wheelgothere;
 
+import com.tridroid.wheelgothere.PlaceActivity;
+
+import android.content.Intent;
+import android.content.Context;
+
 import android.graphics.Canvas;
 import android.graphics.Bitmap;
 
 import com.google.android.maps.MapView;
-
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.OverlayItem;
 import android.graphics.drawable.Drawable;
@@ -16,10 +20,12 @@ import java.util.ArrayList;
 public class WGTItemizedOverlay extends ItemizedOverlay
 {
     private ArrayList<OverlayItem> overlays;
+    private Context context;
 
-    public WGTItemizedOverlay(Drawable defaultmarker){
+    public WGTItemizedOverlay(Context context, Drawable defaultmarker){
         super(boundCenterBottom(defaultmarker));
         overlays = new ArrayList<OverlayItem>();
+        this.context = context;
     }
 
     public void addOverlay(OverlayItem item){
@@ -68,5 +74,14 @@ public class WGTItemizedOverlay extends ItemizedOverlay
                                   paint);
             }
         }
+    }
+
+    protected boolean onTap(int i){
+        Place place = (Place)overlays.get(i);
+        Intent intent = new Intent(context, PlaceActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        context.startActivity(intent);
+        return true;         
     }
 }
