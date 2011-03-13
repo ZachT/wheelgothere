@@ -32,6 +32,10 @@ public class Place extends OverlayItem
         setMarker(icon);
     }
 
+    public String getName(){
+        return name;
+    }
+
     public Drawable getAccessibilityOverlay(){
         return overlay;
     }

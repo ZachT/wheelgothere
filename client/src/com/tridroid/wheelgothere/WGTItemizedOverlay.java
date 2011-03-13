@@ -78,8 +78,10 @@ public class WGTItemizedOverlay extends ItemizedOverlay
 
     protected boolean onTap(int i){
         Place place = (Place)overlays.get(i);
+
         Intent intent = new Intent(context, PlaceActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("EXTRA_PLACE_NAME", place.getName());
 
         context.startActivity(intent);
         return true;         

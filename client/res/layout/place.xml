@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
 
-<RadioGroup
-    android:layout_width="fill_parent"
+<TextView
+    android:id="@+id/placename"
+    android:paddingTop="10dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_alignParentTop="true" 
+    android:layout_centerInParent="true"/>
+
+<RadioGroup
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_centerInParent="true">
     <RadioButton android:id="@+id/accessible"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
@@ -23,4 +31,12 @@
                  android:text="Inaccessible" />
 </RadioGroup>
 
-</LinearLayout>
+<Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"     
+    android:layout_alignParentBottom="true"     
+    android:text="Submit Rating"
+    android:id="@+id/submit" />
+
+</RelativeLayout>
