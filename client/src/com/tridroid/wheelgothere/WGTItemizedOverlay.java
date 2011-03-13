@@ -1,12 +1,14 @@
 package com.tridroid.wheelgothere;
 
 import android.graphics.Canvas;
+import android.graphics.Bitmap;
 
 import com.google.android.maps.MapView;
 
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.OverlayItem;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.Paint;
 import android.graphics.Point;
 import java.util.ArrayList;
@@ -43,16 +45,27 @@ public class WGTItemizedOverlay extends ItemizedOverlay
         if (!shadow){
             for (int i = 0; i < overlays.size(); i++){
                 Point coord = new Point();
-                OverlayItem item = overlays.get(i);
+                Place place = (Place)overlays.get(i);
 
-                mview.getProjection().toPixels(item.getPoint(), coord);
+                mview.getProjection().toPixels(place.getPoint(), coord);
 
                 Paint paint = new Paint();
                 paint.setTextAlign(Paint.Align.CENTER);
                 paint.setARGB(150, 0, 0, 0);
                 paint.setTextSize(20);
-                
-                canvas.drawText(item.getTitle(), coord.x, coord.y + 20, paint);
+
+                canvas.drawText(place.getTitle(), coord.x, coord.y + 20, paint);
+
+                Drawable overlay = place.getAccessibilityOverlay();
+                Bitmap bitmap = ((BitmapDrawable)overlay).getBitmap();
+
+                int w = overlay.getIntrinsicWidth();
+                int h = overlay.getIntrinsicHeight();
+
+                canvas.drawBitmap(bitmap, 
+                                  coord.x + (-w / 2), 
+                                  coord.y - h, 
+                                  paint);
             }
         }
     }

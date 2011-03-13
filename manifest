@@ -1,11 +1,11 @@
-C locations\sappearing\son\smap
-D 2011-03-12T19:57:29
-F client/src/com/tridroid/wheelgothere/Place.java 849cd9f2d9ae6729568d0f0f855b8f1e429e36df
-F client/src/com/tridroid/wheelgothere/PlacesManager.java 29cbe52845a4cde6fa80ca28a088917380771cf9
-F client/src/com/tridroid/wheelgothere/WGTItemizedOverlay.java d3adbdae1053e143eea75e3058e233472e6e734c
+C overlays\sadded
+D 2011-03-13T16:24:55
+F client/src/com/tridroid/wheelgothere/Place.java 181d7777a797292ae7318a6e8aa0a7e0a3e3eb3d
+F client/src/com/tridroid/wheelgothere/PlacesManager.java b48adea5526ae166f68e78d8c50c1c16eed66376
+F client/src/com/tridroid/wheelgothere/WGTItemizedOverlay.java 5b299a8ad726c195c451c2bc25edb4613d69e82c
 F client/src/com/tridroid/wheelgothere/WheelGoThere.java 300dddb8ec0198c5c0c1db079871176a36951a58
-F server/server.py 074e6bb5b5a9e3f50ba368e40fe696ba6e7689ce
-P 405ec063cf17395ba4f31eb1953a64296b9e78e9
-R 4be275eb6c88580ab0f4f1076e39080d
+F server/server.py 9abb99ba59ec433a1d3ea8b1d9e5c32520ac544b
+P c379e7692d10c2d8377a820e3b5320b27450bdb2
+R 7077b52d5e08660f98f99a8a6712949e
 U Zeugmal
-Z 7e431c9f8c03a2790d41a174429593e7
+Z aa8d002dfe9839fe8a208300ec4e3720

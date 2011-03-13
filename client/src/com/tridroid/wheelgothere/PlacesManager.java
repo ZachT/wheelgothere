@@ -51,7 +51,7 @@ public class PlacesManager
                                      new GeoPoint( 
                                      (int)(Double.parseDouble(place.get("lat").toString()) * 1000000), 
                                      (int)(Double.parseDouble(place.get("lng").toString()) * 1000000)
-                                     ), 0));
+                                     ), 0, res));
             }
         } catch (IOException e) { System.out.println("WGT:" + e); }
         return places;
@@ -88,7 +88,7 @@ public class PlacesManager
             HttpEntity entity     = httpresp.getEntity();
 
             Drawable icon = Drawable.createFromStream(entity.getContent(), "src");
-
+      
             int w = icon.getIntrinsicWidth();
             int h = icon.getIntrinsicHeight();
             icon.setBounds(-w / 2, -h, w / 2, 0);

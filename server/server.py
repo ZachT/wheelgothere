@@ -15,7 +15,6 @@ class Root(object):
         response = urllib2.urlopen(req, timeout=10).read()
         response = response.replace("true", "True")
         response = response.replace("false", "False")
-
         response = eval(response)
         groups   = response['response']['groups']
 
