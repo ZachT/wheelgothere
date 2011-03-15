@@ -19,12 +19,13 @@ public final class R {
         public static final int unknown=0x7f020005;
     }
     public static final class id {
-        public static final int accessible=0x7f050002;
-        public static final int inaccessible=0x7f050004;
+        public static final int accessible=0x7f050003;
+        public static final int accessibleradiogroup=0x7f050002;
+        public static final int inaccessible=0x7f050005;
         public static final int mapView=0x7f050000;
-        public static final int partiallyaccessible=0x7f050003;
+        public static final int partiallyaccessible=0x7f050004;
         public static final int placename=0x7f050001;
-        public static final int submit=0x7f050005;
+        public static final int submit=0x7f050006;
     }
     public static final class layout {
         public static final int main=0x7f030000;

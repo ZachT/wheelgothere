@@ -46,7 +46,8 @@ public class PlacesManager
             JsonNode root = mapper.readValue(response, JsonNode.class); 
     
             for (JsonNode place : root){
-                places.add(new Place(place.get("name").toString().replaceAll("\"", ""), 
+                places.add(new Place(place.get("id").toString(), 
+                                     place.get("name").toString().replaceAll("\"", ""), 
                                      requestImageFromServer(place.get("icon").toString()),
                                      new GeoPoint( 
                                      (int)(Double.parseDouble(place.get("lat").toString()) * 1000000), 

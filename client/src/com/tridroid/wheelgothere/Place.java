@@ -6,6 +6,7 @@ import android.content.res.Resources;
 
 public class Place extends OverlayItem
 {
+    private String id;
     private String name;
     private String icon;
     private double lat;
@@ -13,8 +14,11 @@ public class Place extends OverlayItem
     private int accessible;
     private Drawable overlay;
 
-    public Place(String name, Drawable icon, GeoPoint geopoint, int accessible, Resources res){
+    public Place(String id, String name, Drawable icon, 
+                 GeoPoint geopoint, int accessible, Resources res){
         super(geopoint, name, "");
+
+        this.id   = id;
         this.name = name;
         this.lat  = lat;
         this.lng  = lng;
@@ -30,6 +34,10 @@ public class Place extends OverlayItem
             overlay = res.getDrawable(R.drawable.accessible);
 
         setMarker(icon);
+    }
+
+    public String getId(){
+        return id;
     }
 
     public String getName(){

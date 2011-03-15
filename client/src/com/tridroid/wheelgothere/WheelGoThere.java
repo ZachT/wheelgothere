@@ -48,6 +48,7 @@ public class WheelGoThere extends MapActivity implements LocationListener
         mapController = mapView.getController();
 
         mapController.setZoom(ZOOM_LEVEL);
+        mapView.setBuiltInZoomControls(true);
         mapView.setSatellite(false);
         mapView.setTraffic(true);
 

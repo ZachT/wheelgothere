@@ -82,6 +82,7 @@ public class WGTItemizedOverlay extends ItemizedOverlay
         Intent intent = new Intent(context, PlaceActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("EXTRA_PLACE_NAME", place.getName());
+        intent.putExtra("EXTRA_PLACE_ID", place.getId());
 
         context.startActivity(intent);
         return true;         
