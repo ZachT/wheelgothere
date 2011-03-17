@@ -41,7 +41,7 @@ class Root(object):
             icon = ''
             if len(cat):
                 icon = cat[0]['icon']
-    
+             
             places.append({'id':id, 'name':name, 'lat':lat, 'lng':lng, 'icon':icon})
 
         conn.commit()
@@ -52,8 +52,9 @@ class Root(object):
     def ratePlace(self, id, rating):
         conn = sqlite3.connect("wheelgothere.db")
         c    = conn.cursor()
-
-        c.execute("UPDATE places SET votes = votes + 1, points = points + ? WHERE id = ?", [int(rating), id])
+        
+        print id, rating
+        c.execute("UPDATE places SET votes = votes + 1, points = points + ? WHERE id = ?", [int(rating), id.replace('"','')])
         conn.commit()
         conn.close()
 

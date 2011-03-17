@@ -37,6 +37,7 @@
     android:layout_height="wrap_content"
     android:layout_centerInParent="true"     
     android:layout_alignParentBottom="true"     
+    android:visibility="invisible"
     android:text="Submit Rating"
     android:id="@+id/submit" />
 

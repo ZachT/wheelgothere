@@ -23,6 +23,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Button;
+import android.widget.RadioButton;
 
 public class PlaceActivity extends Activity
 {
@@ -33,6 +34,7 @@ public class PlaceActivity extends Activity
     private int rating;
     private String id;
     private String placename;
+    private String api_url;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -41,6 +43,7 @@ public class PlaceActivity extends Activity
         Bundle bundle = getIntent().getExtras();
         placename     = bundle.getString("EXTRA_PLACE_NAME");
         id            = bundle.getString("EXTRA_PLACE_ID");
+        api_url       = getApplicationContext().getString(R.string.api_url);
 
         placetext = (TextView)findViewById(R.id.placename);
         placetext.setText(placename);
@@ -54,14 +57,23 @@ public class PlaceActivity extends Activity
 
     private OnCheckedChangeListener mCheckedChangeListener = new OnCheckedChangeListener(){
         public void onCheckedChanged(RadioGroup group, int checkedId){
-            
+            String status = ((RadioButton)group.findViewById(checkedId)).getText().toString();
+
+            if (status.equals("Accessible"))
+                rating = 2;
+            else if (status.equals("Partially Accessible"))
+                rating = 1;
+            else
+                rating = 0;
+
+            submitbn.setVisibility(android.view.View.VISIBLE); 
         }
     };
 
     private OnClickListener mSubmitListener = new OnClickListener(){
         public void onClick(View v){
             DefaultHttpClient client = new DefaultHttpClient();
-            HttpPost post = new HttpPost(R.string.api_url + "ratePlace");
+            HttpPost post = new HttpPost(api_url + "ratePlace");
             List <NameValuePair> nvps = new ArrayList <NameValuePair>();
             nvps.add(new BasicNameValuePair("id", id));
             nvps.add(new BasicNameValuePair("rating", Integer.toString(rating)));
