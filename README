@@ -1,7 +1,5 @@
-WheelGoThere is an Android application that utilizes Google Maps, the Foursquare API, and user reports to provide basic accessibility
-information on a wide variety of venues.
+WheelGoThere is an Android application that utilizes Google Maps, the Foursquare API, and user reports to provide basic accessibility information on a wide variety of venues.
 
-A cherrypy based Python server communicates with Foursquare on behalf of the client.  The server simplifies the JSON API response and stores 
-all data related to accessibility that is not natively a part of the Foursquare API.
+A cherrypy based Python server communicates with Foursquare on behalf of the client.  The server simplifies the JSON API response and stores all data related to accessibility that is not natively a part of the Foursquare API.
 
 
