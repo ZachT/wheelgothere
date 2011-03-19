@@ -33,7 +33,7 @@ public class WheelGoThere extends MapActivity implements LocationListener
     private WGTItemizedOverlay wgtoverlay;
     private LocationManager locationManager;
     private PlacesManager placesManager;
-    private int ZOOM_LEVEL = 18;
+    private int ZOOM_LEVEL = 16;
 
     /** Called when the activity is first created. */
     @Override
@@ -48,7 +48,6 @@ public class WheelGoThere extends MapActivity implements LocationListener
         mapController = mapView.getController();
 
         mapController.setZoom(ZOOM_LEVEL);
-        mapView.setBuiltInZoomControls(true);
         mapView.setSatellite(false);
         mapView.setTraffic(true);
 

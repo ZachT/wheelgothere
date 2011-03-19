@@ -58,9 +58,9 @@ public class WGTItemizedOverlay extends ItemizedOverlay
                 Paint paint = new Paint();
                 paint.setTextAlign(Paint.Align.CENTER);
                 paint.setARGB(150, 0, 0, 0);
-                paint.setTextSize(20);
+                paint.setTextSize(12);
 
-                canvas.drawText(place.getTitle(), coord.x, coord.y + 20, paint);
+                canvas.drawText(place.getTitle(), coord.x, coord.y + 12, paint);
 
                 Drawable overlay = place.getAccessibilityOverlay();
                 Bitmap bitmap = ((BitmapDrawable)overlay).getBitmap();
