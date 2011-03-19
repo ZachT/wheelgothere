@@ -63,10 +63,14 @@ public class WheelGoThere extends MapActivity implements LocationListener
     
     protected void onResume(){
         super.onResume();
+
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+        onLocationChanged(locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER));
     }
 
     protected void onPause(){
         super.onPause();
+        locationManager.removeUpdates(this);
     }
 
     public void onLocationChanged(Location location){

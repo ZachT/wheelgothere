@@ -46,13 +46,14 @@ public class PlacesManager
             JsonNode root = mapper.readValue(response, JsonNode.class); 
     
             for (JsonNode place : root){
-                places.add(new Place(place.get("id").toString(), 
-                                     place.get("name").toString().replaceAll("\"", ""), 
-                                     requestImageFromServer(place.get("icon").toString()),
-                                     new GeoPoint( 
-                                     (int)(Double.parseDouble(place.get("lat").toString()) * 1000000), 
-                                     (int)(Double.parseDouble(place.get("lng").toString()) * 1000000)
-                                     ), 0, res));
+                String id     = place.get("id").toString();
+                String name   = place.get("name").toString().replaceAll("\"", "");
+                Drawable icon = requestImageFromServer(place.get("icon").toString());
+                int glat      = (int)(Double.parseDouble(place.get("lat").toString()) * 1000000);
+                int glng      = (int)(Double.parseDouble(place.get("lng").toString()) * 1000000);
+                int rating    = Integer.parseInt(place.get("accessible").toString());
+
+                places.add(new Place(id, name, icon, new GeoPoint(glat, glng), rating, res));
             }
         } catch (IOException e) { System.out.println("WGT:" + e); }
         return places;

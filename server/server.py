@@ -31,9 +31,13 @@ class Root(object):
 
         for place in group['items']:
             c.execute("INSERT OR IGNORE INTO places (id) VALUES(?)", [place['id']]) 
+            conn.commit()
 
-            id   = place['id']
-            name = place['name']
+            c.execute("SELECT accessible FROM places WHERE id = ?", [place['id']])
+            accessible = int(c.fetchone()[0])
+
+            id   = place['id'].strip('"')
+            name = place['name'].strip('"')
             lat  = place['location']['lat']
             lng  = place['location']['lng']
             cat  = place['categories']
@@ -41,10 +45,10 @@ class Root(object):
             icon = ''
             if len(cat):
                 icon = cat[0]['icon']
-             
-            places.append({'id':id, 'name':name, 'lat':lat, 'lng':lng, 'icon':icon})
 
-        conn.commit()
+            print name             
+            places.append({'id':id, 'name':name, 'lat':lat, 'lng':lng, 'icon':icon, 'accessible':accessible})
+
         conn.close()        
         return json.dumps(places)
 
@@ -53,15 +57,14 @@ class Root(object):
         conn = sqlite3.connect("wheelgothere.db")
         c    = conn.cursor()
         
-        print id, rating
-        c.execute("UPDATE places SET votes = votes + 1, points = points + ? WHERE id = ?", [int(rating), id.replace('"','')])
+        c.execute("UPDATE places SET accessible = ? WHERE id = ?", [int(rating), id.replace('"','')])
         conn.commit()
         conn.close()
 
 conn = sqlite3.connect("wheelgothere.db")
 c    = conn.cursor()
 
-c.execute("CREATE TABLE IF NOT EXISTS places (id TEXT, points INTEGER DEFAULT 0, votes INTEGER DEFAULT 0)")
+c.execute("CREATE TABLE IF NOT EXISTS places (id TEXT UNIQUE, accessible INTEGER DEFAULT 0)")
 conn.commit()
 conn.close()
 

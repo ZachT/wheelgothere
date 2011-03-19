@@ -60,11 +60,11 @@ public class PlaceActivity extends Activity
             String status = ((RadioButton)group.findViewById(checkedId)).getText().toString();
 
             if (status.equals("Accessible"))
-                rating = 2;
+                rating = 3;
             else if (status.equals("Partially Accessible"))
-                rating = 1;
+                rating = 2;
             else
-                rating = 0;
+                rating = 1;
 
             submitbn.setVisibility(android.view.View.VISIBLE); 
         }
@@ -86,6 +86,7 @@ public class PlaceActivity extends Activity
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            finish();
         }
     };
 }
