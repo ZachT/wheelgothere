@@ -73,19 +73,20 @@ public class WheelGoThere extends MapActivity implements LocationListener
     }
 
     public void onLocationChanged(Location location){
-        mapView.invalidate();
+        if (location != null){
+            mapView.invalidate();
+            GeoPoint geopoint = new GeoPoint((int)location.getLatitude() * 1000000,
+                                             (int)location.getLongitude() * 1000000);
 
-        GeoPoint geopoint = new GeoPoint((int)location.getLatitude() * 1000000,
-                                         (int)location.getLongitude() * 1000000);
+            List<Place> places = placesManager.getNearbyLocations(geopoint);
 
-        List<Place> places = placesManager.getNearbyLocations(geopoint);
+            wgtoverlay.clear();
+            for (Place place : places){
+                wgtoverlay.addOverlay((OverlayItem)place);    
+            }
 
-        wgtoverlay.clear();
-        for (Place place : places){
-            wgtoverlay.addOverlay((OverlayItem)place);    
-        }
-
-        mapController.animateTo(geopoint);
+            mapController.animateTo(geopoint);
+        } 
     } 
 
     public void onProviderEnabled(String provider){}
